@@ -1,7 +1,7 @@
 from flask import Flask, request
 import logging
 import json
-# импортируем функции из нашего второго файла geo
+import os
 from geo import get_country, get_distance, get_coordinates
 
 app = Flask(__name__)
@@ -60,4 +60,5 @@ def get_cities(req):
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
