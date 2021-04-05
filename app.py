@@ -6,11 +6,9 @@ from geo import get_country, get_distance, get_coordinates
 
 app = Flask(__name__)
 
-# Добавляем логирование в файл.
-# Чтобы найти файл, перейдите на pythonwhere в раздел files,
-# он лежит в корневой папке
-logging.basicConfig(level=logging.INFO, filename='app.log',
-                    format='%(asctime)s %(levelname)s %(name)s %(message)s')
+
+# logging.basicConfig(level=logging.INFO, filename='app.log',
+#                     format='%(asctime)s %(levelname)s %(name)s %(message)s')
 
 
 @app.route('/post', methods=['POST'])
@@ -61,4 +59,5 @@ def get_cities(req):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
+    logging.info('App started')
     app.run(host='0.0.0.0', port=port)
